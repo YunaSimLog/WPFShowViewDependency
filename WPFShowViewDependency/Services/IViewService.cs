@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFShowViewDependency.Models;
 
 namespace WPFShowViewDependency.Services
 {
@@ -15,5 +16,7 @@ namespace WPFShowViewDependency.Services
             where TViewModel : INotifyPropertyChanged;      // TViewModel 값을 INotifyPropertyChanged 인터페이스만 가능하다.
 
         void ShowMainView();
+
+        void ShowSubView(SubData subData);
     }
 }

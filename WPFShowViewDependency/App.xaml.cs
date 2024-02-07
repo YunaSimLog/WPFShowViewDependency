@@ -24,12 +24,14 @@ namespace WPFShowViewDependency
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<MainView>();
+            services.AddTransient<SubView>();
 
             // Services
             services.AddSingleton<IViewService, ViewService>();
 
             // ViewModels
             services.AddSingleton<MainViewModel>();
+            services.AddTransient<SubViewModel>();
 
             return services.BuildServiceProvider();
         }
