@@ -39,9 +39,23 @@ namespace WPFShowViewDependency.Services
             ShowView<MainView, MainViewModel>();
         }
 
+        private bool ActivateView<TView>() where TView : Window
+        {
+            IEnumerable<Window> windows = Application.Current.Windows.OfType<TView>();
+            if (windows.Any())
+            {
+                windows.ElementAt(0).Activate();
+                return true;
+            }
+            return false;
+        }
+
         public void ShowSubView(SubData subData)
         {
-            ShowView<SubView, SubViewModel>(subData);
+            if (!ActivateView<SubView>())
+            {
+                ShowView<SubView, SubViewModel>(subData);
+            }
         }
     }
 }
